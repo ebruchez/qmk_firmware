@@ -9,11 +9,11 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_MAIN] = LAYOUT_ortho_2x4(
-     TO(_INTELLIJ_DEBUG), KC_NO, KC_NO, KC_NO,
-     KC_NO,               KC_NO, KC_NO, KC_NO
+     TO(_INTELLIJ_DEBUG), KC_BRIGHTNESS_UP,   KC__MUTE,            KC__VOLUP,
+     KC_NO,               KC_BRIGHTNESS_DOWN, KC_MEDIA_PLAY_PAUSE, KC__VOLDOWN
   ),
   [_INTELLIJ_DEBUG] = LAYOUT_ortho_2x4(
-    TO(_CURSOR), KC_F9,  C(KC_F10), KC_NO,  
+    TO(_CURSOR), KC_F9,  C(KC_F10), C(LCMD(KC_F5)),
     KC_F5,       KC_F10, KC_F11,    S(KC_F11)
   ),
   [_CURSOR] = LAYOUT_ortho_2x4(
@@ -39,13 +39,13 @@ bool oled_task_user(void) {
     case _MAIN:
       oled_write_ln_P(PSTR("Main"), true);
       oled_write_ln_P(PSTR(""), false);
-      oled_write_ln_P(PSTR("MODE                "), false);
-      oled_write_ln_P(PSTR("                    "), false);
+      oled_write_ln_P(PSTR("MODE Bri+ Mute Vol+ "), false);
+      oled_write_ln_P(PSTR("     Bri- Play Vol- "), false);
       break;
     case _INTELLIJ_DEBUG:
       oled_write_ln_P(PSTR("Debug"), true);
       oled_write_ln_P(PSTR(""), false);
-      oled_write_ln_P(PSTR("MODE Brpt Crsr      "), false);
+      oled_write_ln_P(PSTR("MODE Brpt Crsr Cont "), false);
       oled_write_ln_P(PSTR("Cnct Over Into Out  "), false);
       break;
     case _CURSOR:
