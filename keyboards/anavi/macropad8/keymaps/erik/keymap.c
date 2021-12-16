@@ -14,15 +14,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [_INTELLIJ_DEBUG] = LAYOUT_ortho_2x4(
     TO(_CURSOR), KC_F9,  C(KC_F10), C(LCMD(KC_F5)),
-    KC_F5,       KC_F10, KC_F11,    S(KC_F11)
+    KC_F5,       KC_F11, S(KC_F11), KC_F10
   ),
   [_CURSOR] = LAYOUT_ortho_2x4(
     TO(_LIGHTS), KC_UP,   KC_HOME,  KC_PGUP,  
     KC_LEFT,     KC_DOWN, KC_RIGHT, KC_PGDOWN
   ),
   [_LIGHTS] = LAYOUT_ortho_2x4(
-     TO(_MAIN), BL_TOGG,          BL_STEP,          BL_BRTG,          
-     RGB_TOG,   RGB_MODE_FORWARD, RGB_MODE_RAINBOW, RGB_MODE_SNAKE
+     TO(_MAIN),        BL_STEP,          BL_BRTG,        BL_TOGG,          
+     RGB_MODE_FORWARD, RGB_MODE_RAINBOW, RGB_MODE_SNAKE, RGB_TOG
   )
 };
 
@@ -46,7 +46,7 @@ bool oled_task_user(void) {
       oled_write_ln_P(PSTR("Debug"), true);
       oled_write_ln_P(PSTR(""), false);
       oled_write_ln_P(PSTR("MODE Brpt Crsr Cont "), false);
-      oled_write_ln_P(PSTR("Cnct Over Into Out  "), false);
+      oled_write_ln_P(PSTR("Cnct Into Out  Over "), false);
       break;
     case _CURSOR:
       oled_write_ln_P(PSTR("Cursor"), true);
@@ -57,8 +57,8 @@ bool oled_task_user(void) {
     case _LIGHTS:
       oled_write_ln_P(PSTR("Lights"), true);
       oled_write_ln_P(PSTR(""), false);
-      oled_write_ln_P(PSTR("MODE BL   Step Brth "), false);
-      oled_write_ln_P(PSTR("RGB  Mode Rain Snake"), false);
+      oled_write_ln_P(PSTR("MODE Step Brth BL  "), false);
+      oled_write_ln_P(PSTR("Mode Rain Snak RGB "), false);
       break;
     default:
       oled_write_ln_P(PSTR("N/A"), true);
